@@ -1,0 +1,99 @@
+img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: block;
+    clip-path: polygon(0% 60%, 100% 0%, 100% 100%, 0 100%);
+    z-index: 0;
+}
+
+h2 {
+    font-size: 3em;
+    color: #333;
+    position: absolute;
+    top: 8%;
+    left: 2%;
+}
+
+#location {
+    font-size: 1.4em;
+    line-height: 1.6;
+    position: absolute;
+    top: 350px;
+    left: 40px;
+}
+
+#beds {
+    font-size: 1.4em;
+    line-height: 1.6;
+    position: absolute;
+    top: 410px;
+    left: 40px;
+}
+
+#price {
+    font-size: 1.4em;
+    line-height: 1.6;
+    position: absolute;
+    top: 380px;
+    left: 40px;
+}
+
+#deleteBtn {
+    left: 9%;
+}
+
+#editBtn{
+    left: 5%;
+}
+
+#editBtn,
+#deleteBtn {
+    position: absolute;
+    top: 23%;
+    padding: 10px;
+    text-decoration: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+}
+
+#editBtn:hover,
+#deleteBtn:hover {
+    background-color: #0056b3;
+}
+
+.calendar{
+    padding: 1em;
+    background-color: antiquewhite;
+    margin-top: 15px;
+    position: absolute;
+    top: 27%;
+    left: 40px;
+    border-radius: 16px;
+    box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.07);
+}
+
+label{
+    margin-bottom: 15px;
+}
+
+li{
+    position: absolute;
+    top: 550px;
+    left: 40px;
+}
+
+#description{
+    padding: 10px;
+    width: 350px;
+    text-align: center;
+    background-color: antiquewhite;
+    margin-top: 20px;
+    position: absolute;
+    top: 80px;
+    left: 480px;
+    border-radius: 16px;
+    box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.07);
+    z-index: 2;
+}

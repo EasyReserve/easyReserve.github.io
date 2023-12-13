@@ -3,29 +3,36 @@ import { repeat } from "../lib/directives/repeat.js";
 import * as roomService from "../data/room.js";
 import * as reservationService from "../data/reservation.js";
 import { submitHandler } from "../util.js";
+import { notify } from "../notify.js";
 
 const detailsTemp = (room, hasUser, onDelete, onBook) => html`
+<link rel="stylesheet" href="/static/details.css">
 <h2>${room.name}</h2>
-<p>Location: ${room.location}</p>
-<p>Beds: ${room.beds}</p>
-${hasUser && ! room.isOwner ? reservationForm(onBook) : nothing}
+<p id="location">Location: ${room.location}</p>
+<p id="beds">Beds: ${room.beds}</p>
+<p id="price">Price: ${room.price}</p>
+<p id="description">${room.description}</p>
+<img src=${room.imgUrl} alt="room">
 ${room.isOwner ? html`
-<a href="/edit/${room.objectId}">Edit</a>
-<a @click=${onDelete} href="javascript:void(0)">Delete</a>` : nothing}
+<a href="/edit/${room.objectId}" id="editBtn">Edit</a>
+<a @click=${onDelete} href="javascript:void(0)" id="deleteBtn">Delete</a>` : nothing}
+${hasUser && !room.isOwner ? reservationForm(onBook) : nothing}
 ${hasUser ? html`
 <ul>
     ${repeat(room.reservations, r => r.objectId, reservationCard)}
 </ul>` : nothing }`;
 
 const reservationForm = (onSubmit) => html `
-<form @submit=${onSubmit}>
+<form @submit=${onSubmit} class="calendar">
     <label>From <input type="date" name="startDate"></label>
     <label>To <input type="date" name="endDate"></label>
     <button>Request reservation</button>    
 </form>`; 
 
+// ${room.isOwner ? 'You' : room.owner.username}
+
 const reservationCard = (res) => html`
-<li>From: ${res.startDate.toISOString().slice(0, 10)} To: ${res.endDate.toISOString().slice(0, 10)} By: ${res.owner.username}</li>`;
+<li>Requested by: ${res.owner.username} <br> From: ${res.startDate.toISOString().slice(0, 10)}<br> To: ${res.endDate.toISOString().slice(0, 10)}</li>`;
 
 export async function detailsView(ctx) {
     const id = ctx.params.id;
@@ -40,6 +47,8 @@ export async function detailsView(ctx) {
         room.reservations = result.results;
     }
 
+    console.log(ctx.data);
+    
     ctx.render(detailsTemp(ctx.data, hasUser, onDelete, submitHandler(book)));
 
     async function onDelete(){
@@ -55,14 +64,14 @@ export async function detailsView(ctx) {
         endDate = new Date(endDate);
 
         if(Number.isNaN(startDate.getDate())){
-            return alert('Invalid starting date!')
+            return notify('Invalid starting date!')
         }
         if(Number.isNaN(endDate.getDate())){
-            return alert('Invalid ending date!')
+            return notify('Invalid ending date!')
         }
 
         if(endDate <= startDate){
-            return alert('Ending date must be after starting date!');
+            return notify('Ending date must be after starting date!');
         }
 
         const reservationData = {

@@ -1,12 +1,12 @@
 import { addOwner, encodeObject } from "../util.js";
 import { del, get, post, put } from "./api.js";
-import { createPointer } from "../util.js";
 import { filterRelation } from "../util.js";
 
 const endpoints = {
     'rooms': `/classes/Room?where=${encodeObject({openForBooking: true})}&include=owner`,
     'roomsWithUser': (userId) => `/classes/Room?where=${encodeObject({ $or: [{ openForBooking: true }, filterRelation('owner', '_User', userId)] })}&include=owner`,
-    'roomById': '/classes/Room/'
+    'roomById': '/classes/Room/',
+    'query': (query) => `/classes/Room?where=${encodeObject({ name: { $regex: query, $options: 'i' } })}`
 }
 
 export async function getAll(userId) {
@@ -31,4 +31,8 @@ export async function update(id, roomData, userId) {
 
 export async function deleteById(id) {
     return del(endpoints.roomById + id);
+}
+
+export async function searchQuery(query){
+    return get(endpoints.query(query));
 }

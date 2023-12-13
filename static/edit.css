@@ -1,0 +1,58 @@
+/* edit.css */
+
+h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    margin-left: 560px;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative; /* Add this line to make the positioning relative to the form */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input {
+    font-size: 1.7em;
+    width: 100%;
+    padding: 1px;
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+img {
+    width: 100%;
+    margin-top: 20px; /* Adjusted margin */
+    height: auto;
+    display: block;
+    clip-path: polygon(0 60%, 100% 0, 100% 92%, 0 92%);
+}
+
+body {
+    background-color: antiquewhite;
+}
+
+label[for="openForBooking"] {
+    display: flex;
+    align-items: center;
+}
+
+input[name="openForBooking"] {
+    margin-left: -182px;
+}

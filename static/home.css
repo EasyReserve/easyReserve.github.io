@@ -1,0 +1,62 @@
+/* home.css */
+
+body {
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    color: #333;
+    position: absolute;
+    top: 12%; /* Adjust as needed */
+    left: 25%; /* Adjust as needed */
+}
+
+#firstP {
+    font-size: 1.2em;
+    line-height: 1.6;
+    position: absolute;
+    top: 180px; 
+    left: 30px; 
+}
+
+#secondP{
+    font-size: 1.2em;
+    line-height: 1.6;
+    position: absolute;
+    top: 220px; 
+    left: 30px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+    clip-path: polygon(0 60%, 100% 0, 100% 95%, 0 95%);
+}
+
+/* footer */
+footer {
+    background-color: #333;
+    padding: 35px;
+    color: white;
+    text-align: center;
+    margin-top: -70px;
+}
+
+footer #foot{
+    position: absolute;
+    top: 114%;
+    left: 45%;
+}

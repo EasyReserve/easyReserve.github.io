@@ -6,6 +6,7 @@ export const navTemp = (hasUser) => html`
     <a href="/rooms">Rooms</a>
     ${hasUser ? html`
     <a href="/host">Host</a>
+    <a href="/profile">My Profile</a>
     <a href="/logout">Logout</a>` : html `
     <a href="/login">Login</a>
     <a href="/register">Register</a>`}

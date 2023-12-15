@@ -30,5 +30,4 @@ export async function login(email, password) {
 export async function logout(){
     const result = post('/logout')
     clearUserData();
-    console.log(result);
 }

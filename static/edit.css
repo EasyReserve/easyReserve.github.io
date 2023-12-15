@@ -1,5 +1,3 @@
-/* edit.css */
-
 h2 {
     font-size: 2.5em;
     margin-bottom: 20px;
@@ -9,7 +7,7 @@ h2 {
 form {
     max-width: 400px;
     margin: 0 auto;
-    position: relative; /* Add this line to make the positioning relative to the form */
+    position: relative; 
 }
 
 label {
@@ -38,7 +36,7 @@ button:hover {
 
 img {
     width: 100%;
-    margin-top: 20px; /* Adjusted margin */
+    margin-top: 20px;
     height: auto;
     display: block;
     clip-path: polygon(0 60%, 100% 0, 100% 92%, 0 92%);

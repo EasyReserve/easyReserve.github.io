@@ -13,6 +13,7 @@ form {
 
 label {
     display: block;
+    margin-left: 5px;
     margin-bottom: 10px;
 }
 
@@ -28,10 +29,11 @@ button {
     color: white;
     padding: 10px;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-button:hover {  
+button:hover {
     background-color: #0056b3;
 }
 
@@ -44,6 +46,32 @@ img {
     clip-path: polygon(0 60%, 100% 0, 100% 92%, 0 92%);
 }
 
-body{
+body {
     background-color: antiquewhite;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    h2 {
+        font-size: 1.5em;
+        top: 40px;
+        left: 40px;
+    }
+
+    label {
+        margin-bottom: 20px;
+    }
+
+    input {
+        font-size: 1em;
+    }
+
+    img {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
 }

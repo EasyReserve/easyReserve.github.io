@@ -31,14 +31,27 @@ const reservationForm = (onSubmit) => html`
     <button>Request reservation</button>    
 </form>`;
 
-const reservationCard = (res, onAccept, onReject) => html`
-<li>
-    Requested by: ${res.owner.username} <br>
-    From: ${res.startDate.toISOString().slice(0, 10)}<br>
-    To: ${res.endDate.toISOString().slice(0, 10)}<br>
-    <a @click=${onAccept} href="javascript:void(0)" class="accept-link">Accept</a>
-    <a @click=${onReject} href="javascript:void(0)" class="reject-link">Reject</a>
-</li>`;
+const reservationCard = (res, onAccept, onReject) => {
+    if (res.status === 'waiting') {
+        return html`
+            <li>
+                Requested by: ${res.owner.username} <br>
+                From: ${res.startDate.toISOString().slice(0, 10)}<br>
+                To: ${res.endDate.toISOString().slice(0, 10)}<br>
+                <a @click=${onAccept} href="javascript:void(0)" class="accept-link">Accept</a>
+                <a @click=${onReject} href="javascript:void(0)" class="reject-link">Reject</a>
+            </li>`;
+    } else {
+        return html`
+            <li>
+                Requested by: ${res.owner.username} <br>
+                From: ${res.startDate.toISOString().slice(0, 10)}<br>
+                To: ${res.endDate.toISOString().slice(0, 10)}<br>
+                <p>You have ${res.status === 'accepted' ? 'accepted' : 'rejected'} this request!</p>
+            </li>`;
+    }
+};
+
 
 
 export async function detailsView(ctx) {
@@ -101,6 +114,10 @@ export async function detailsView(ctx) {
             host: ctx.data.owner.objectId
         };
 
+        const reservationForm = document.querySelector('.calendar');
+        reservationForm.reset(); 
+
+        notify('Your request was send!')
         const result = await reservationService.create(reservationData, ctx.user.objectId);
         ctx.page.redirect('/rooms/' + id);
     }

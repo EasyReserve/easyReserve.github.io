@@ -1,6 +1,6 @@
 import { addOwner, createPointer, encodeDate } from "../util.js";
 import { encodeObject, filterRelation } from "../util.js ";
-import { get, post, put } from "./api.js";
+import { get, post, put, del} from "./api.js";
 
 const endpoints = {
     'reservationsByHost': (ownerId) => `/classes/Reservation?where=${encodeObject({ host: { __type: 'Pointer', className: '_User', objectId: ownerId } })}` + '&include=owner',
@@ -43,4 +43,8 @@ export async function getByHost(ownerId){
 
 export async function getByOwner(ownerId){
     return get(endpoints.reservationsByOwner(ownerId));
+}
+
+export async function deleteById(id) {
+    return del(endpoints.reservationsUpdate + id);
 }

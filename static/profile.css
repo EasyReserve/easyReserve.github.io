@@ -133,24 +133,25 @@ body {
   text-align: center;
 }
 
-#host{
+#host {
   position: absolute;
   top: 55px;
   left: 45px;
 }
-#owner{
+
+#owner {
   position: absolute;
   top: 55px;
   left: 1250px;
 }
 
-h4{
+h4 {
   position: absolute;
   top: 85px;
   left: 95px;
 }
 
-#own{
+#own {
   position: absolute;
   top: 85px;
   left: 1240px;
@@ -172,7 +173,7 @@ h4{
   margin: 5px 0;
 }
 
-.own-reservation-card + .own-reservation-card {
+.own-reservation-card+.own-reservation-card {
   top: 330px;
   margin-top: 10px;
 }
@@ -204,8 +205,8 @@ h4{
   margin: 10px 0;
 }
 
-.reservation-card + .reservation-card {
-  top: 300px; 
+.reservation-card+.reservation-card {
+  top: 340px;
   margin-top: 10px;
 }
 
@@ -220,8 +221,8 @@ h4{
   color: black;
   font-size: 15px;
   position: absolute;
-  top: 130px;
-  left: 10px;
+  top: 160px;
+  left: 65px;
   text-align: left;
   letter-spacing: 1px;
   padding: 10px;
@@ -229,13 +230,142 @@ h4{
 }
 
 .waiting-status {
-  background-color: rgb(255, 255, 131);
+  background-color: rgb(255, 255, 155);
 }
 
 .accepted-status {
-  background-color: rgb(130, 255, 130);
+  background-color: rgb(153, 255, 153);
 }
 
 .rejected-status {
-  background-color: rgb(255, 130, 130);
+  background-color: rgb(255, 154, 154);
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .userInfo {
+    margin-top: 70px;
+    margin-bottom: 80px;
+    width: 90px;;
+    height: 70px;
+  }
+
+  .userInfo>h2 {
+    font-size: 0.7em;
+    padding-top: -20px;
+    margin-top: -10px;
+  }
+
+  .avatar {
+    border-radius: 100px;
+    height: 60px;
+    width: 60px;
+    top: -40px;
+  }
+  
+  .avatar img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .eventBoard {
+    margin: 30px auto;
+    width: 300px;
+    min-height: 50px;
+    height: 100px;
+  }
+
+  .event-info>img {
+    margin-top: -10px;
+    border-radius: 50%;
+    height: 100px;
+    top: 7px;
+    left: 5px;
+    width: 100px;
+  }
+
+  .event-info>h6 {
+    margin-top: -15px;
+    font-size: 0.8em;
+    font-weight: 750;
+  }
+
+  .event-info>h2 {
+    margin-top: -20px;
+  }
+
+  .details-button {
+    font-size: 10px;
+    bottom: 10px;
+    margin-left: 180px;
+  }
+
+  #host {
+    font-size: 0.6em;
+    top: 25px;
+    left: 15px;
+  }
+
+  #owner {
+    font-size: 0.6em;
+    top: 25px;
+    left: 280px;
+  }
+
+  h4 {
+    font-size: 0.6em;
+    top: 40px;
+    left: 45px;
+  }
+
+  #own{
+    position: relative;
+    font-size: 0.6em;
+    top: -515px;
+    left: 260px;
+  }
+
+  .reservation-card {
+    z-index: 6;
+    height: 30px;
+    width: 80px;
+    font-size: 6px;
+    top: 40px;
+    left: 25px;
+    padding-bottom: -200px;
+  }
+
+  .reservation-card+.reservation-card {
+    top: 145px;
+    margin-top: 10px;
+  }
+
+  .details-requests {
+    font-size: 5px;
+    top: 80px;
+    left: 30px;
+    padding: 5px;
+  }
+
+  .own-reservation-card {
+    position: relative;
+    top: -960px;
+    left: 260px;
+    height: 30px;
+    width: 80px;
+    font-size: 6px;
+  }
+
+  .own-reservation-card+.own-reservation-card {
+    position: relative;
+    top: -970px;
+    margin-top: 10px;
+  } 
+
+  .details-requests-own {
+    font-size: 5px;
+    top: 80px;
+    left: 35px;
+    padding: 5px;
+  }
 }

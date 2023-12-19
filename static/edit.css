@@ -54,3 +54,38 @@ label[for="openForBooking"] {
 input[name="openForBooking"] {
     margin-left: -182px;
 }
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    h2 {
+        position: relative;
+        font-size: 1.5em;
+        top: 30px;
+        left: 40px;
+        margin: 0;
+    }
+
+    label {
+        margin-left: 5px;
+        margin-bottom: 18px;
+    }
+
+    input {
+        font-size: 0.7em;
+    }
+
+    img{
+        position: relative;
+        margin-top: -25px;
+        margin-bottom: 10px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 1px;
+    }
+   
+    input[name="openForBooking"] {
+        margin-left: -182px;
+        margin-top: -30px;
+    }
+}

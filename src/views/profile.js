@@ -29,10 +29,11 @@ const profileTemp = (items, userData, reservationTemplates, ownReservationsTemp)
 </section>`;
 
 const resTemp = (reservation) => html`
-<div class="reservation-card">
+<div class="reservation-card ${getStatusClass(reservation.status)}">
     <p>Hosted by: ${reservation.owner.username}</p>
     <p>Start Date: ${reservation.startDate.iso.slice(0, 10)}</p>
     <p>End Date: ${reservation.endDate.iso.slice(0, 10)}</p>
+    <p>You ${reservation.status} this request!</p>
     <a href="/rooms/${reservation.room.objectId}" class="details-requests">Details</a>
 </div>`;
 
@@ -69,6 +70,8 @@ ${item.isOwner !== true ? null : html`
         </div>
     </div>`}`;
 
+const oneDay = 24 * 60 * 60 * 1000;
+
 export async function profileView(ctx) {
     const userData = getUserData();
     const { results: rooms } = await roomService.getAll(ctx.user?.objectId);
@@ -78,8 +81,23 @@ export async function profileView(ctx) {
 
 
     const ownReservations = await resServire.getByOwner(userData.objectId)
-    
-    const ownReservationsTemp = ownReservations.results.map(r => ownResTemp(r))
+
+    const filteredOwnReservations = ownReservations.results.filter( async (r) => {
+        const isNotWaiting = r.status !== 'waiting';
+        const isOlderThanOneDay = Date.now() - new Date(r.updatedAt).getTime() > oneDay;
+
+        if (isNotWaiting && isOlderThanOneDay) {
+            console.log(r.objectId);
+            await resServire.deleteById(r.objectId);
+            return false; 
+        }
+
+        return true;
+    });
+
+
+    const ownReservationsTemp = filteredOwnReservations.map(r => ownResTemp(r));
+
 
     if (ctx.user) {
         rooms.forEach(r => r.isOwner = r.owner.objectId == ctx.user.objectId);

@@ -11,7 +11,7 @@ const catalogTemp = (list, onClick) => html`
         <button @click=${onClick} class="button-list">Search</button>
 </div>
 <link rel="stylesheet" href="/static/catalog.css">
-<h1>Available Rooms</h1>
+<h2>Available Rooms</h2>
 ${list}`;
 
 const listTemp = (rooms) => html`${rooms.length >= 1 ? html `<section>

@@ -142,7 +142,7 @@ body {
 #owner {
   position: absolute;
   top: 55px;
-  left: 1250px;
+  left: 1070px;
 }
 
 h4 {
@@ -162,7 +162,7 @@ h4 {
   position: absolute;
   border-radius: 16px;
   top: 100px;
-  left: 1250px;
+  left: 1080px;
   box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.07);
   padding: 10px;
   padding-bottom: 60px;

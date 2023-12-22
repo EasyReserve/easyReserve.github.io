@@ -16,17 +16,19 @@ const createTemp = (onSubmit) => html`
     <label>Description: <textarea id="description" name="description" rows="4" cols="52"></textarea></label>
     <label>ImageURL: <input type="url" alt="room" name="imgUrl"></label>
     <label>Open for booking: <input type="checkbox" name="openForBooking"></label>
+    <label>Promo price: <input type="checkbox" name="promo"></label>
     <button>Create Room</button>
 </form>`;
 
 export async function createView(ctx) {
     ctx.render(createTemp(submitHandler(onSubmit)));
 
-    async function onSubmit({ name, location, beds, openForBooking, price, imgUrl, description }) {
+    async function onSubmit({ name, location, beds, openForBooking, price, imgUrl, description , promo}) {
         beds = parseInt(beds);
         price = Number(price)
 
         openForBooking = Boolean(openForBooking);
+        promo = Boolean(promo);
 
 
         if(name == '' || location == '' || Number.isNaN(beds) || price == '' || imgUrl == '' || description == ''){
@@ -35,7 +37,7 @@ export async function createView(ctx) {
 
         const userId = ctx.user?.objectId;
         
-        const result = await roomService.create({name, location, beds, openForBooking, price, imgUrl, description}, userId);
+        const result = await roomService.create({name, location, beds, openForBooking, price, imgUrl, description, promo}, userId);
 
         ctx.page.redirect('/rooms/' + result.objectId);
     }

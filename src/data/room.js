@@ -4,6 +4,7 @@ import { filterRelation } from "../util.js";
 
 const endpoints = {
     'rooms': `/classes/Room?where=${encodeObject({openForBooking: true})}&include=owner`,
+    'roomsPromo': `/classes/Room?where=${encodeObject({openForBooking: true, promo: true})}&include=owner`,
     'roomsWithUser': (userId) => `/classes/Room?where=${encodeObject({ $or: [{ openForBooking: true }, filterRelation('owner', '_User', userId)] })}&include=owner`,
     'roomById': '/classes/Room/',
     'query': (query) => `/classes/Room?where=${encodeObject({ name: { $regex: query, $options: 'i' } })}`
@@ -35,4 +36,8 @@ export async function deleteById(id) {
 
 export async function searchQuery(query){
     return get(endpoints.query(query));
+}
+
+export async function getPromo(){
+    return get(endpoints.roomsPromo)
 }

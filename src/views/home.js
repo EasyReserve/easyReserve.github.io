@@ -1,5 +1,7 @@
 
-import { html } from "../lib/lit-html.js";
+import { html} from "../lib/lit-html.js";
+import { repeat } from '../lib/directives/repeat.js';
+import * as roomService from '../data/room.js';
 
 const homeTemp = (list) => html`
     <h1>Welcome to Easy Reserve!</h1>
@@ -13,6 +15,27 @@ const homeTemp = (list) => html`
     ${list}
 `;
 
-export function homeView(ctx) {
-    ctx.render(homeTemp());
+const listTemp = (rooms) => html`${rooms.length >= 1 ? html `<section>
+<h2>Our promo offers</h2>
+${repeat(rooms,  r => r.objectId, roomCard)}
+</section>` : html `<p class="no-ads"> No results.</p>`}
+`;
+
+const roomCard = (room) => html`
+<article class="room-home">
+        <h3>${room.name}</h3>
+        <p>Location: ${room.location}</p>
+        <p>Beds: ${room.beds}</p>
+        <p>Price: ${room.price}</p>
+        <img src=${room.imgUrl} alt="room">
+        <img src="../../images/icon-promo.png" alt="Promo Badge" class="promo-badge">
+        <p><a class="action" href="/rooms/${room.objectId}">View Details</a></p>
+</article>`;
+
+export async function homeView(ctx) {
+    const { results: rooms } = await roomService.getPromo();
+
+    console.log(rooms);
+    ctx.render(homeTemp(listTemp(rooms)));
+
 }

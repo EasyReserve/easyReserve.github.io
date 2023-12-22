@@ -46,12 +46,14 @@ body {
     background-color: antiquewhite;
 }
 
-label[for="openForBooking"] {
+label[for="openForBooking"],
+label[for="promo"]{
     display: flex;
     align-items: center;
 }
 
-input[name="openForBooking"] {
+input[name="openForBooking"],
+input[name="promo"] {
     margin-left: -182px;
 }
 

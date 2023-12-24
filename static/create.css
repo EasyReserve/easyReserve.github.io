@@ -24,10 +24,13 @@ input {
 }
 
 button {
+    position: absolute;
+    margin-top: 40px;
+    left: 45%;
     background-color: #007BFF;
+    border-radius: 5px;
     color: white;
     padding: 10px;
-    border-radius: 5px;
     border: none;
     cursor: pointer;
 }
@@ -50,7 +53,8 @@ body{
 }
 
 label[for="openForBooking"],
-label[for="promo"] {
+label[for="promo"],
+input[name="feat"] {
     display: flex;
     align-items: center;
 }
@@ -58,6 +62,19 @@ label[for="promo"] {
 input[name="openForBooking"],
 input[name="promo"] {
     margin-left: -182px;
+}
+
+input[name="feat"]{
+    width: 50px;
+    height: 20px;
+    margin-bottom: -25px;
+    margin-left: 95%;
+    margin-top: 20px;
+    font-size: 1.5em;
+} 
+
+input[type="checkbox"] + input[type="checkbox"] {
+    text-decoration: underline;
 }
 
 
@@ -94,4 +111,8 @@ input[name="promo"] {
         margin-left: -182px;
         margin-top: -30px;
     }
+
+    input[name="feat"]{
+        margin-left: 85%;
+    } 
 }

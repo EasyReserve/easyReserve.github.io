@@ -35,7 +35,6 @@ const roomCard = (room) => html`
 export async function homeView(ctx) {
     const { results: rooms } = await roomService.getPromo();
 
-    console.log(rooms);
     ctx.render(homeTemp(listTemp(rooms)));
 
 }

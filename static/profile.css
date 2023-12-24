@@ -154,7 +154,7 @@ h4 {
 #own {
   position: absolute;
   top: 85px;
-  left: 1240px;
+  left: 1060px;
 }
 
 .own-reservation-card {
@@ -302,27 +302,27 @@ h4 {
 
   #host {
     font-size: 0.6em;
-    top: 25px;
+    top: 35px;
     left: 15px;
   }
 
   #owner {
     font-size: 0.6em;
-    top: 25px;
-    left: 280px;
+    top: 35px;
+    left: 260px;
   }
 
   h4 {
     font-size: 0.6em;
-    top: 40px;
+    top: 50px;
     left: 45px;
   }
 
   #own{
     position: relative;
     font-size: 0.6em;
-    top: -515px;
-    left: 260px;
+    top: -665px;
+    left: 240px;
   }
 
   .reservation-card {
@@ -330,8 +330,8 @@ h4 {
     height: 30px;
     width: 80px;
     font-size: 6px;
-    top: 40px;
-    left: 25px;
+    top: 70px;
+    left: 15px;
     padding-bottom: -200px;
   }
 
@@ -349,8 +349,8 @@ h4 {
 
   .own-reservation-card {
     position: relative;
-    top: -960px;
-    left: 260px;
+    top: -650px;
+    left: 270px;
     height: 30px;
     width: 80px;
     font-size: 6px;

@@ -23,7 +23,11 @@ input {
 }
 
 button {
+    position: absolute;
+    margin-top: 40px;
+    left: 40%;
     background-color: #007BFF;
+    border-radius: 5px;
     color: white;
     padding: 10px;
     border: none;
@@ -47,7 +51,8 @@ body {
 }
 
 label[for="openForBooking"],
-label[for="promo"]{
+label[for="promo"],
+input[name="feat"]{
     display: flex;
     align-items: center;
 }
@@ -56,6 +61,16 @@ input[name="openForBooking"],
 input[name="promo"] {
     margin-left: -182px;
 }
+ 
+input[name="feat"]{
+    width: 50px;
+    height: 20px;
+    margin-bottom: -22px;
+    margin-left: 95%;
+    margin-top: 19px;
+    font-size: 1.5em;
+} 
+
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
     h2 {
@@ -90,4 +105,8 @@ input[name="promo"] {
         margin-left: -182px;
         margin-top: -30px;
     }
+
+    input[name="feat"]{
+        margin-left: 85%;
+    } 
 }

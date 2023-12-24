@@ -7,7 +7,7 @@ import { notify } from "../notify.js";
 //${repeat(room.reservations, r => r.objectId, reservationCard, onAccept, onReject)} 
 
 
-const detailsTemp = (room, hasUser, onDelete, onBook, onAccept, onReject) => html`
+const detailsTemp = (room, hasUser, onDelete, onBook, onAccept, onReject, selectedFeatures) => html`
 <link rel="stylesheet" href="/static/details.css">
 <h2>${room.name}</h2>
 <p id="location">Location: ${room.location}</p>
@@ -15,11 +15,21 @@ const detailsTemp = (room, hasUser, onDelete, onBook, onAccept, onReject) => htm
 <p id="price">Price: ${room.price}</p>
 <p id="description">${room.description}</p>
 <img src=${room.imgUrl} alt="room">
+
+${selectedFeatures ? html`<h3>Amenities:</h3>
+<ul>
+    ${selectedFeatures.map(feature => html`<li id="amenities">${feature}</li>`)}
+</ul>
+` : nothing}
+
 ${room.isOwner ? html`
 <a href="/edit/${room.objectId}" id="editBtn">Edit</a>
 <a @click=${onDelete} href="javascript:void(0)" id="deleteBtn">Delete</a>` : nothing}
+
 ${hasUser && !room.isOwner ? reservationForm(onBook) : nothing}
+
 ${hasUser && room.isOwner ? html`
+
 <ul>
     ${repeat(room.reservations, r => r.objectId, (res) => reservationCard(res, onAccept, onReject))}
 </ul>` : nothing}`;
@@ -52,11 +62,10 @@ const reservationCard = (res, onAccept, onReject) => {
     }
 };
 
-
-
 export async function detailsView(ctx) {
     const id = ctx.params.id;
     const room = ctx.data;
+
 
     const hasUser = Boolean(ctx.user);
     room.isOwner = room.owner?.objectId === ctx.user?.objectId;
@@ -67,8 +76,9 @@ export async function detailsView(ctx) {
         room.reservations = result.results;
     }
 
-    ctx.render(detailsTemp(ctx.data, hasUser, onDelete, submitHandler(book), onAccept, onReject));
+    ctx.render(detailsTemp(ctx.data, hasUser, onDelete, submitHandler(book), onAccept, onReject, room.features));
 
+    
     async function onDelete() {
         const conf = confirm('Are you sure to delete this offer?');
         if (conf) {
@@ -115,7 +125,7 @@ export async function detailsView(ctx) {
         };
 
         const reservationForm = document.querySelector('.calendar');
-        reservationForm.reset(); 
+        reservationForm.reset();
 
         notify('Your request was send!')
         const result = await reservationService.create(reservationData, ctx.user.objectId);

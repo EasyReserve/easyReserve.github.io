@@ -17,6 +17,26 @@ const createTemp = (onSubmit) => html`
     <label>ImageURL: <input type="url" alt="room" name="imgUrl"></label>
     <label>Open for booking: <input type="checkbox" name="openForBooking"></label>
     <label>Promo price: <input type="checkbox" name="promo"></label>
+    
+    <h3>Amenities</h3>
+    
+        <input type="checkbox" name="feat" value="wifi"> Wifi
+        <input type="checkbox" name="feat" value="tv"> TV
+        <input type="checkbox" name="feat" value="parking"> Parking
+        <input type="checkbox" name="feat" value="fitness"> Fitness
+        <input type="checkbox" name="feat" value="kitchen"> Kitchen
+        <input type="checkbox" name="feat" value="washer"> Washer
+        <input type="checkbox" name="feat" value="dryer"> Dryer
+        <input type="checkbox" name="feat" value="air conditioning"> Air conditioning
+        <input type="checkbox" name="feat" value="fireplace"> Fireplace
+        <input type="checkbox" name="feat" value="jacuzzi"> Jacuzzi
+        <input type="checkbox" name="feat" value="pool"> Pool
+        <input type="checkbox" name="feat" value="barbecue"> Barbecue
+        <input type="checkbox" name="feat" value="waterfront"> Waterfront
+        <input type="checkbox" name="feat" value="ski slope"> Ski slope
+        <input type="checkbox" name="feat" value="forest"> Forest
+        <input type="checkbox" name="feat" value="center"> Center
+
     <button>Create Room</button>
 </form>`;
 
@@ -25,7 +45,12 @@ export async function createView(ctx) {
 
     async function onSubmit({ name, location, beds, openForBooking, price, imgUrl, description , promo}) {
         beds = parseInt(beds);
-        price = Number(price)
+        price = Number(price);
+
+        const features = [];
+        document.querySelectorAll('input[name="feat"]:checked').forEach((checkbox) => {
+            features.push(checkbox.value);
+        });
 
         openForBooking = Boolean(openForBooking);
         promo = Boolean(promo);
@@ -37,7 +62,7 @@ export async function createView(ctx) {
 
         const userId = ctx.user?.objectId;
         
-        const result = await roomService.create({name, location, beds, openForBooking, price, imgUrl, description, promo}, userId);
+        const result = await roomService.create({name, location, beds, openForBooking, price, imgUrl, description, promo, features}, userId);
 
         ctx.page.redirect('/rooms/' + result.objectId);
     }

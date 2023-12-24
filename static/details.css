@@ -119,6 +119,23 @@ li {
     background-color: rgb(255, 131, 131);
 }
 
+h3{
+    position: absolute;
+    left: 2%;
+    margin-top: 15px;
+}
+
+#amenities {
+    display: inline-block;
+    margin-right: 10px; 
+    position: relative;
+    list-style-type: none;
+    padding: 3px;
+    top: 88%; 
+    left: 10%;
+}
+
+
 @media only screen and (min-width: 320px) and (max-width: 480px) {
     h2 {
         font-size: 1.5em;
@@ -128,7 +145,7 @@ li {
 
     #editBtn,
     #deleteBtn {
-        top: 40%;
+        top: 44%;
         left: 10%;
     }
     #deleteBtn {
@@ -138,5 +155,20 @@ li {
     .calendar {
         top: 65%;
     }
+
+    h3{
+        left: 10%;
+        margin-top: 100%;
+    }
+
+    #amenities {
+        margin-right: 15px; 
+        position: relative;
+        list-style-type: none;
+        padding: 3px;
+        top: 410px; 
+        left: 2px;
+    }
+    
 
 }

@@ -85,6 +85,7 @@ a:hover {
     left: 50px;
     width: 45px;
     height: 45px;
+    margin: 0;
     border-radius: 35px;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }

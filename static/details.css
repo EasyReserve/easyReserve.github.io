@@ -1,9 +1,11 @@
-img {
+#head-img {
     position: relative;
-    width: 100%;
-    height: auto;
+    width: 650px;
+    height: 500px;
+    left: 700px;
+    top: 50px;
+    border-radius: 15px;
     display: block;
-    clip-path: polygon(0% 60%, 100% 0%, 100% 100%, 0 100%);
     z-index: 0;
 }
 
@@ -11,46 +13,46 @@ h2 {
     font-size: 3em;
     color: #333;
     position: absolute;
-    top: 8%;
-    left: 2%;
+    top: 70px;
+    left: 60px;
 }
 
-#location {
-    font-size: 1.4em;
-    line-height: 1.6;
-    position: absolute;
-    top: 350px;
-    left: 40px;
-}
-
-#beds {
-    font-size: 1.4em;
-    line-height: 1.6;
-    position: absolute;
-    top: 410px;
-    left: 40px;
-}
-
+#location,
+#beds,
 #price {
     font-size: 1.4em;
     line-height: 1.6;
     position: absolute;
-    top: 380px;
-    left: 40px;
+    margin: 0;
+}
+
+#location {
+    top: 200px;
+    left: 80px;
+}
+
+#beds {
+    top: 240px;
+    left: 80px;
+}
+
+#price {
+    top: 280px;
+    left: 80px;
 }
 
 #deleteBtn {
-    left: 9%;
+    left: 19%;
 }
 
 #editBtn {
-    left: 5%;
+    left: 15%;
 }
 
 #editBtn,
 #deleteBtn {
     position: absolute;
-    top: 23%;
+    top: 580px;
     padding: 10px;
     text-decoration: none;
     background-color: #007BFF;
@@ -63,13 +65,20 @@ h2 {
     background-color: #0056b3;
 }
 
+#calendar-head {
+    position: absolute;
+    top: 670px;
+    margin-left: 100px;
+}
+
 .calendar {
     padding: 1em;
     background-color: antiquewhite;
     margin-top: 15px;
     position: absolute;
-    top: 27%;
-    left: 40px;
+    top: 750px;
+    left: 100px;
+    width: 200px;
     border-radius: 16px;
     box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.07);
 }
@@ -79,28 +88,47 @@ label {
 }
 
 li {
-    position: absolute;
-    top: 550px;
-    left: 40px;
+    display: inline-block;
+    width: 150px;
+    margin-bottom: 10px;
+    margin-left: 20px;
     background-color: rgba(255, 255, 240, 0.7);
     padding: 10px;
     border-radius: 16px;
     box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.07);
 }
 
+#amenities {
+    margin-left: 700px;
+    margin-top: 200px;
+}
+
 
 #description {
     padding: 10px;
-    width: 350px;
+    width: 400px;
     text-align: center;
     background-color: antiquewhite;
     margin-top: 20px;
     position: absolute;
-    top: 80px;
-    left: 480px;
+    top: 380px;
+    left: 60px;
     border-radius: 16px;
     box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.07);
     z-index: 2;
+}
+
+#requests {
+    position: absolute;
+    top: 670px;
+    left: 220px;
+}
+
+#request-list {
+    position: absolute;
+    width: 180px;
+    top: 770px;
+    left: 140px
 }
 
 .accept-link,
@@ -119,56 +147,123 @@ li {
     background-color: rgb(255, 131, 131);
 }
 
-h3{
+#amenities-head {
     position: absolute;
-    left: 2%;
-    margin-top: 15px;
-}
-
-#amenities {
-    display: inline-block;
-    margin-right: 10px; 
-    position: relative;
-    list-style-type: none;
-    padding: 3px;
-    top: 88%; 
-    left: 10%;
+    left: 980px;
+    top: 670px;
 }
 
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
     h2 {
-        font-size: 1.5em;
-        top: 5%;
-        left: 3%;
+        font-size: 1.3em;
+        top: 6%;
+        left: 32%;
+    }
+
+    #location,
+    #beds,
+    #price {
+        font-size: 0.8em;
+        line-height: 1.6;
+        position: absolute;
+        margin: 0;
+    }
+
+    #location {
+        top: 380px;
+        left: 30px;
+    }
+
+    #price {
+        top: 400px;
+        left: 30px;
+    }
+
+    #beds {
+        top: 420px;
+        left: 30px;
+    }
+
+    #description {
+        padding: 10px;
+        width: 120px;
+        font-size: 0.6em;
+        margin-top: 20px;
+        top: 450px;
+        left: 20px;
     }
 
     #editBtn,
     #deleteBtn {
-        top: 44%;
+        top: 600px;
         left: 10%;
+        font-size: 0.7em;
+        margin-top: 5%;
     }
+
     #deleteBtn {
         left: 25%;
     }
+
+    #head-img {
+        width: 384px;
+        height: 240px;
+        left: 0px;
+        top: 75px;
+        border-radius: 15px;
+        display: block;
+        z-index: 0;
+    }
+
+    #requests {
+        font-size: 0.8em;
+        top: 370px;
+        left: 245px;
+    }
+
+
+    #request-list {
+        font-size: 0.7em;
+        width: 133px;
+        top: 470px;
+        left: 180px;
+    }
+
+    #amenities-head {
+        font-size: 0.7em;
+        position: absolute;
+        left: 160px;
+        top: 670px;
+    }
     
-    .calendar {
-        top: 65%;
-    }
-
-    h3{
-        left: 10%;
-        margin-top: 100%;
-    }
-
     #amenities {
-        margin-right: 15px; 
-        position: relative;
-        list-style-type: none;
-        padding: 3px;
-        top: 410px; 
-        left: 2px;
+        margin-left: 35px;
+        margin-top: 440px;
+        font-size: 0.6em;
     }
     
+    li {
+        width: 80px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+    }
+
+    #calendar-head {
+        font-size: 0.7em;
+        top: 370px;
+        margin-left: 200px;
+    }
+
+    .calendar {
+        font-size: 0.7em;
+        width: 130px;
+        top: 450px;
+        left: 195px;
+        margin: 0;
+    }    
+
+
+
 
 }

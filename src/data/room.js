@@ -7,7 +7,8 @@ const endpoints = {
     'roomsPromo': `/classes/Room?where=${encodeObject({openForBooking: true, promo: true})}&include=owner`,
     'roomsWithUser': (userId) => `/classes/Room?where=${encodeObject({ $or: [{ openForBooking: true }, filterRelation('owner', '_User', userId)] })}&include=owner`,
     'roomById': '/classes/Room/',
-    'query': (query) => `/classes/Room?where=${encodeObject({ name: { $regex: query, $options: 'i' } })}`
+    'query': (query) => `/classes/Room?where=${encodeObject({ name: { $regex: query, $options: 'i' } })}`,
+    'amenities': (whereClause) => `/classes/Room?where=${encodeObject(whereClause)}&include=owner`
 }
 
 export async function getAll(userId) {
@@ -40,4 +41,16 @@ export async function searchQuery(query){
 
 export async function getPromo(){
     return get(endpoints.roomsPromo)
+}
+
+export async function getByAmenities(amenities) {
+    if(amenities.length == 0){
+        return get(endpoints.rooms);
+    }
+    const whereClause = {
+        openForBooking: true,
+        features: { $all: amenities }
+    };
+
+    return get(endpoints.amenities(whereClause));
 }
